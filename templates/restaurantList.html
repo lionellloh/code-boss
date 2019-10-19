@@ -14,7 +14,7 @@
         <div class="form-style-5">
                 <form method="POST">
                     <fieldset>
-                        <legend><span class="number">1</span>Search Criteria</legend>
+                        <legend><span class="number">1</span>Search by Coordinates</legend>
                         <input type="text" name="field1" placeholder="latitude" >
                         <input type="text" name="field2" placeholder="longitude"> 
                         <input type="text" name="field3" placeholder="radius">
@@ -30,11 +30,17 @@
                 <tr>
                     <th>address</th>
                     <th>name</th>
+                    <th>open now</th>
+                    <th>num of ratings</th>
+                    <th>rating</th>
                 </tr>
                 {% for result in results %}
                     <tr>
                         <td> {{ result.address }} </td>
                         <td> {{ result.name }} </td>
+                        <td> {{ result.open_now }} </td>
+                        <td> {{ result.num_ratings }} </td>
+                        <td> {{ result.rating }} </td>
                     </tr>
                 {% endfor %}
             </table>

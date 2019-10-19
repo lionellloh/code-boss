@@ -14,7 +14,7 @@ from collections import defaultdict
 google_places = GooglePlaces(APIKEY)
 gmaps = googlemaps.Client(key= "AIzaSyDU8rHEpvfpXuTHUlEL86X3CCUmgzzE8fU")
 
-def find_places(lat = "1.284340", lng = "103.852320", radius=200):
+def find_places(lat = "1.284340", lng = "103.852320", radius=500):
     query_result = google_places.nearby_search(
         lat_lng={'lat': lat, 'lng': lng},
         radius=radius,
@@ -34,7 +34,7 @@ def find_places(lat = "1.284340", lng = "103.852320", radius=200):
              name=res["name"],
              open_now=random.random() > 0.2,
              num_ratings=res["user_ratings_total"],
-             rating=str(res["rating"])
+             rating=str(round(res["rating"],2))
              )
         )
 
