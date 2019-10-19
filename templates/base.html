@@ -1,0 +1,17 @@
+<!-- app/templates/base.html -->
+
+<!-- Modify nav bar menu -->
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
+    <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+</ul>
+
+<!-- Modify footer menu -->
+<ul class="list-inline">
+    <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
+    <li class="footer-menu-divider">⋅</li>
+    <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+    <li class="footer-menu-divider">⋅</li>
+    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+</ul>
