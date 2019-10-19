@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Search Restaurant</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='search.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+        <div class="form-style-5">
+                <form method="POST">
+                    <fieldset>
+                        <legend><span class="number">1</span>Search Criteria</legend>
+                        <input type="text" name="field1" placeholder="latitude" >
+                        <input type="text" name="field2" placeholder="longitude"> 
+                        <input type="text" name="field3" placeholder="radius">
+                    </fieldset>
+                    <input type="submit" name="submit_button" value="Search" />
+                </form>
+            </div>
+<div class="container">
+    <div class="card text-center" style="margin: 50px auto 50px auto;">
+
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>address</th>
+                    <th>name</th>
+                </tr>
+                {% for result in results %}
+                    <tr>
+                        <td> {{ result.address }} </td>
+                        <td> {{ result.name }} </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
