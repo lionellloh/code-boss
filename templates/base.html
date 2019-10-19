@@ -1,17 +1,52 @@
 <!-- app/templates/base.html -->
 
 <!-- Modify nav bar menu -->
-<ul class="nav navbar-nav navbar-right">
-    <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
-    <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ title }} | Bank of Singapore Restaurant Finder</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Search Restaurant</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='search.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand topnav" href="{{ url_for('restaurants_near_me') }}"> Bank of Singapore Restaurant Finder</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
 
-<!-- Modify footer menu -->
-<ul class="list-inline">
-    <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
-    <li class="footer-menu-divider">⋅</li>
-    <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-    <li class="footer-menu-divider">⋅</li>
-    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-</ul>
+                    <li><a href="{{ url_for('restaurants_near_me') }}">Restaurants Near Me</a></li>
+                    <li><a href="{{ url_for('restaurant_list_page') }}">Find by Lat-Long</a></li>
+                    <li><a href="{{ url_for('search_text') }}">Text Search</a></li>
+
+
+              </ul>
+          </div>
+        </div>
+    </nav>
+    <div class="wrapper">
+      {% block body %}
+      {% endblock %}
+      <div class="push"></div>
+    </div>
+
+</body>
+</html>

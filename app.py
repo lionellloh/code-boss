@@ -7,45 +7,54 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
-
+import os
 
 login_manager = LoginManager()
 app = Flask(__name__)
 Bootstrap(app)
 db = SQLAlchemy()
 migrate = Migrate(app, db)
-app.config["SQLALCHEMY_DATABASE_URI"] ='mysql+pymysql://root@localhost/codebossdb'
+# app.config["SQLALCHEMY_DATABASE_URI"] ='mysql+pymysql://root@localhost/codebossdb'
 from models import *
 
 # you can set key as config
-app.config['GOOGLEMAPS_KEY'] = "AIzaSyDagEGHGxQzxQHJ0OlD3SGyrBlOJUhAqrk"
+app.config['GOOGLEMAPS_KEY'] = os.getenv("GOOGLEMAPS_KEY")
 
 # Initialize the extension
 GoogleMaps(app)
-
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
+#
+# @app.route('/')
+# def hello_world():
+#     return 'Hello World!'
     
 @app.route("/restaurant", methods=['POST','GET'])
 def restaurant_list_page():
     if request.method == 'POST':
         if request.form['submit_button'] == 'Search':
             # TODO: Add 0s
-            latitude = request.form['field1']
-            longitude = request.form['field2']
+            latitude = request.form['field1']+"00000"
+            longitude = request.form['field2']+"000000"
+
             try:
                 radius = int(float(request.form['field3']))
 
             except:
-                pass
+                radius = 1000
             # places = [{'address': 'Rd, Singapore',
             # 'name': 'Kamat Indian Food Stall',
             # 'open_now': False,
             # 'num_ratings': 13,
             # 'rating': 3.3}]
             # places = find_places(latitude, longitude, radius)
-            places = find_places(latitude, longitude, radius)
+
+            if not radius:
+                radius = 1000
+
+            if not latitude or not longitude:
+                places = find_places()
+
+            else:
+                places = find_places(latitude, longitude, radius)
             print(places)
             return render_template("restaurantList.html", results=places)
     else:
@@ -60,7 +69,7 @@ def restaurant_list_page():
 #     return latlng
 
 
-@app.route("/searchtext", methods=['POST','GET'])
+@app.route("/search", methods=['POST','GET'])
 def search_text():
     if request.method == 'POST':
         if request.form['submit_button'] == 'Search':
@@ -98,7 +107,7 @@ def search_text():
         return render_template("searchtext.html")
 
 
-@app.route("/nearby", methods=['POST','GET'])
+@app.route("/", methods=['POST','GET'])
 def restaurants_near_me():
     latlng = tuple(current_location())
 

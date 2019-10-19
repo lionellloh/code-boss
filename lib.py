@@ -8,8 +8,10 @@ import geocoder
 from pprint import pprint
 from datetime import datetime
 
-APIKEY = "AIzaSyBFx8hqftDOlrSWRTiOSowjwfeS1OQtBpw"
+# APIKEY = "AIzaSyBFx8hqftDOlrSWRTiOSowjwfeS1OQtBpw"
+APIKEY="AIzaSyDU8rHEpvfpXuTHUlEL86X3CCUmgzzE8fU"
 from collections import defaultdict
+
 
 google_places = GooglePlaces(APIKEY)
 gmaps = googlemaps.Client(key= "AIzaSyDU8rHEpvfpXuTHUlEL86X3CCUmgzzE8fU")
@@ -52,15 +54,12 @@ def string_find_place(query ="Bank of Singapore, Raffles Place"):
 
 def current_location():
 
-    g = geocoder.ip('me')
-    return (g.latlng)
+    # g = geocoder.ip('me')
+    return [1.2843, 103.8504]
 
 
 
 if __name__ == "__main__":
-    results = find_places()
-
-
-    print(results)
+    print(current_location())
     # print(current_location())
     # # print(find_places())
