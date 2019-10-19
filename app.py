@@ -15,7 +15,8 @@ def book_list_page():
             latitude = request.form['field1']
             longitude = request.form['field2']
             radius = request.form['field3']
-            search_criteria = [latitude, longitude, radius]
+            search_text = request.form['field4']
+            search_criteria = [latitude, longitude, radius, search_text]
             # book_list = get_book([latitude, longitude, radius])
             book_list = [{"address":"street1","name":"best rest"}]
             print(search_criteria)
