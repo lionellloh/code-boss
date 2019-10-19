@@ -1,5 +1,6 @@
 from flask import render_template, url_for, redirect, Flask, render_template, request, session
 import json
+from lib import find_places
 
 app = Flask(__name__)
 
@@ -14,15 +15,17 @@ def book_list_page():
         if request.form['submit_button'] == 'Search':
             latitude = request.form['field1']
             longitude = request.form['field2']
-            radius = request.form['field3']
+            radius = int(float(request.form['field3']))
             search_criteria = [latitude, longitude, radius]
             # book_list = get_book([latitude, longitude, radius])
-            book_list = [{"address":"street1","name":"best rest"}]
-            print(search_criteria)
-            return render_template("restaurantList.html", results=book_list)
+
+            places = find_places(latitude, longitude, radius)
+            print(places)
+
+            return render_template("restaurantList.html", results=places)
     else:
-        book_list = [{"address":"street1","name":"best rest"}]
-        return render_template("restaurantList.html", results=book_list)
+        # book_list = [{"address":"street1","name":"best rest"}]
+        return render_template("restaurantList.html", results=[])
 
 if __name__ == '__main__':
     app.run()
