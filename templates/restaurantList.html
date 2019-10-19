@@ -32,11 +32,17 @@
                 <tr>
                     <th>address</th>
                     <th>name</th>
+                    <th>open now</th>
+                    <th>num of ratings</th>
+                    <th>rating</th>
                 </tr>
                 {% for result in results %}
                     <tr>
                         <td> {{ result.address }} </td>
                         <td> {{ result.name }} </td>
+                        <td> {{ result.open_now }} </td>
+                        <td> {{ result.num_ratings }} </td>
+                        <td> {{ result.rating }} </td>
                     </tr>
                 {% endfor %}
             </table>
