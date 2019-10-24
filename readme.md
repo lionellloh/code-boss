@@ -14,6 +14,11 @@ Suggested technologies: javascript, react, nodejs, java, python and any database
 2.  Allow Text boxes to specify location            12.5 points
 3.  Show the restaurants near the location in Map view          12.5 points
 4.  Allow adding of a restaurant to user's favourite list           12.5 points
-e 
+
+Team: 
+1. Huikang (Data Analysis)
+2. Tyler Tay (Algorithm Questions)
+3. Shan Shan (Frontend Dev)
+4. Lionell (Backend Dev) 
 
 
