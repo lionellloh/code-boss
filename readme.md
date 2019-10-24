@@ -1,5 +1,7 @@
 # Code-Boss Challenge
 
+Foreword: 
+I believe a team's composition is extremely important to the success of the Hackathon. Having a common tech stack will be extremely valuable as well!
 
 Develop a mobile application that shows “restaurants near you with their respective rating highlighted” 
 1. Basic Questions (80 Points)
